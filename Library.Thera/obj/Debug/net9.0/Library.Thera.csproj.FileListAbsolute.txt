@@ -9,3 +9,4 @@
 /Users/mehdielaoufir/C# Project/Library.Thera/obj/Debug/net9.0/refint/Library.Thera.dll
 /Users/mehdielaoufir/C# Project/Library.Thera/obj/Debug/net9.0/Library.Thera.pdb
 /Users/mehdielaoufir/C# Project/Library.Thera/obj/Debug/net9.0/ref/Library.Thera.dll
+/Users/mehdielaoufir/C# Project/Library.Thera/obj/Debug/net9.0/Library.Thera.sourcelink.json

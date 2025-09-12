@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mehdielaoufir/C# Project 13-41-53-470/CLI.Thera/CLI.Thera.csproj",
+      "projectUniqueName": "/Users/mehdielaoufir/C# Project/CLI.Thera/CLI.Thera.csproj",
       "projectName": "CLI.Thera",
-      "projectPath": "/Users/mehdielaoufir/C# Project 13-41-53-470/CLI.Thera/CLI.Thera.csproj",
+      "projectPath": "/Users/mehdielaoufir/C# Project/CLI.Thera/CLI.Thera.csproj",
       "packagesPath": "/Users/mehdielaoufir/.nuget/packages/",
-      "outputPath": "/Users/mehdielaoufir/C# Project 13-41-53-470/CLI.Thera/obj/",
+      "outputPath": "/Users/mehdielaoufir/C# Project/CLI.Thera/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/mehdielaoufir/.nuget/NuGet/NuGet.Config"
@@ -51,8 +51,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "/Users/mehdielaoufir/C# Project 13-41-53-470/Library.Thera/Library.Thera.csproj": {
-              "projectPath": "/Users/mehdielaoufir/C# Project 13-41-53-470/Library.Thera/Library.Thera.csproj"
+            "/Users/mehdielaoufir/C# Project/Library.Thera/Library.Thera.csproj": {
+              "projectPath": "/Users/mehdielaoufir/C# Project/Library.Thera/Library.Thera.csproj"
             }
           }
         }

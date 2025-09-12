@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mehdielaoufir/C# Project 13-41-53-470/Library.Thera/Library.Thera.csproj",
+      "projectUniqueName": "/Users/mehdielaoufir/C# Project/Library.Thera/Library.Thera.csproj",
       "projectName": "Library.Thera",
-      "projectPath": "/Users/mehdielaoufir/C# Project 13-41-53-470/Library.Thera/Library.Thera.csproj",
+      "projectPath": "/Users/mehdielaoufir/C# Project/Library.Thera/Library.Thera.csproj",
       "packagesPath": "/Users/mehdielaoufir/.nuget/packages/",
-      "outputPath": "/Users/mehdielaoufir/C# Project 13-41-53-470/Library.Thera/obj/",
+      "outputPath": "/Users/mehdielaoufir/C# Project/Library.Thera/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/mehdielaoufir/.nuget/NuGet/NuGet.Config"

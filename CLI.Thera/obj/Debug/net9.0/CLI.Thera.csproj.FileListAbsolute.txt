@@ -16,3 +16,4 @@
 /Users/mehdielaoufir/C# Project/CLI.Thera/bin/Debug/net9.0/Library.Thera.pdb
 /Users/mehdielaoufir/C# Project/CLI.Thera/obj/Debug/net9.0/CLI.Thera.csproj.AssemblyReference.cache
 /Users/mehdielaoufir/C# Project/CLI.Thera/obj/Debug/net9.0/CLI.Thera.csproj.Up2Date
+/Users/mehdielaoufir/C# Project/CLI.Thera/obj/Debug/net9.0/CLI.Thera.sourcelink.json
