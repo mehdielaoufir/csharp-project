@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Build outputs
+bin/
+obj/
+
+# Visual Studio artifacts
+.vs/
+*.user
+*.suo
+
+# MAUI platform builds
+Platforms/*/bin/
+Platforms/*/obj/
