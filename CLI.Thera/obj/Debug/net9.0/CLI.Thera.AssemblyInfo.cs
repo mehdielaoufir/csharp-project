@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CLI.Thera")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eadeae2477807690efa9bf31d3975a95e28571f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5bf9e0401e00fa71dc3fde48cfb7408c5be97f03")]
 [assembly: System.Reflection.AssemblyProductAttribute("CLI.Thera")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CLI.Thera")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
