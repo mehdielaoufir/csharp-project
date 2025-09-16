@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLI.Thera", "CLI.Thera\CLI.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Thera", "Library.Thera\Library.Thera.csproj", "{C15A23AB-5F1B-4B0A-8F61-2B401D11E5F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiApp.Thera", "MauiApp.Thera\MauiApp.Thera.csproj", "{18D4173C-500F-4503-8EEC-A2EA729C2FCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{C15A23AB-5F1B-4B0A-8F61-2B401D11E5F0}.Release|x64.Build.0 = Release|Any CPU
 		{C15A23AB-5F1B-4B0A-8F61-2B401D11E5F0}.Release|x86.ActiveCfg = Release|Any CPU
 		{C15A23AB-5F1B-4B0A-8F61-2B401D11E5F0}.Release|x86.Build.0 = Release|Any CPU
+		{18D4173C-500F-4503-8EEC-A2EA729C2FCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18D4173C-500F-4503-8EEC-A2EA729C2FCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18D4173C-500F-4503-8EEC-A2EA729C2FCD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{18D4173C-500F-4503-8EEC-A2EA729C2FCD}.Debug|x64.Build.0 = Debug|Any CPU
+		{18D4173C-500F-4503-8EEC-A2EA729C2FCD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{18D4173C-500F-4503-8EEC-A2EA729C2FCD}.Debug|x86.Build.0 = Debug|Any CPU
+		{18D4173C-500F-4503-8EEC-A2EA729C2FCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18D4173C-500F-4503-8EEC-A2EA729C2FCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18D4173C-500F-4503-8EEC-A2EA729C2FCD}.Release|x64.ActiveCfg = Release|Any CPU
+		{18D4173C-500F-4503-8EEC-A2EA729C2FCD}.Release|x64.Build.0 = Release|Any CPU
+		{18D4173C-500F-4503-8EEC-A2EA729C2FCD}.Release|x86.ActiveCfg = Release|Any CPU
+		{18D4173C-500F-4503-8EEC-A2EA729C2FCD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
