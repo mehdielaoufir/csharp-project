@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using CLI.Thera.Models;
 
-
 namespace MyApp
 {
     public class Program
@@ -10,8 +9,8 @@ namespace MyApp
         static void Main(string[] args)
         {
             string choice = "";
-            List<string> patients = new List<string>();
-            List<string> physicians = new List<string>();
+            List<Patient> patients = new List<Patient>();
+            List<Physician> physicians = new List<Physician>();
             List<Appointment> appointments = new List<Appointment>();
 
             do
@@ -38,7 +37,11 @@ namespace MyApp
                         string address = Console.ReadLine() ?? "";
 
                         Console.WriteLine("Enter birthdate (MM/dd/yyyy): ");
-                        string birthdate = Console.ReadLine() ?? "";
+                        DateTime birthdate;
+                        while (!DateTime.TryParse(Console.ReadLine(), out birthdate))
+                        {
+                            Console.Write("Invalid format. Try again (MM/dd/yyyy): ");
+                        }
 
                         Console.WriteLine("Enter race: ");
                         string race = Console.ReadLine() ?? "";
@@ -46,11 +49,18 @@ namespace MyApp
                         Console.WriteLine("Enter gender: ");
                         string gender = Console.ReadLine() ?? "";
 
-                        string patientInfo = $"{name}, {address}, {birthdate}, {race}, {gender}";
-                        patients.Add(patientInfo);
+                        patients.Add(new Patient
+                        {
+                            Name = name,
+                            Address = address,
+                            BirthDate = birthdate,
+                            Race = race,
+                            Gender = gender
+                        });
 
                         Console.WriteLine("Patient added successfully!");
                         break;
+
                     case "2":
                         Console.WriteLine("Enter physician name: ");
                         string docName = Console.ReadLine() ?? "";
@@ -58,21 +68,45 @@ namespace MyApp
                         Console.WriteLine("Enter license number: ");
                         string license = Console.ReadLine() ?? "";
 
-                        Console.WriteLine("Enter graduation date: ");
-                        string gradDate = Console.ReadLine() ?? "";
+                        Console.WriteLine("Enter graduation date (MM/dd/yyyy): ");
+                        DateTime gradDate;
+                        while (!DateTime.TryParse(Console.ReadLine(), out gradDate))
+                        {
+                            Console.Write("Invalid format. Try again (MM/dd/yyyy): ");
+                        }
 
-                        string physicianInfo = $"{docName}, License: {license}, GradDate: {gradDate}";
-                        physicians.Add(physicianInfo);
+                        Console.WriteLine("Enter specialization: ");
+                        string specialization = Console.ReadLine() ?? "";
+
+                        physicians.Add(new Physician
+                        {
+                            Name = docName,
+                            LicenseNumber = license,
+                            GraduationDate = gradDate,
+                            Specialization = specialization
+                        });
 
                         Console.WriteLine("Physician added successfully!");
-
                         break;
+
                     case "3":
                         Console.WriteLine("Enter physician's name for appointment: ");
-                        string apptDoc = Console.ReadLine() ?? "";
+                        string apptDocName = Console.ReadLine() ?? "";
+                        Physician apptDoc = physicians.Find(d => d.Name == apptDocName)!;
+                        if (apptDoc == null)
+                        {
+                            Console.WriteLine("Physician not found.");
+                            break;
+                        }
 
                         Console.WriteLine("Enter patient name for appointment: ");
-                        string apptPatient = Console.ReadLine() ?? "";
+                        string apptPatientName = Console.ReadLine() ?? "";
+                        Patient apptPatient = patients.Find(p => p.Name == apptPatientName)!;
+                        if (apptPatient == null)
+                        {
+                            Console.WriteLine("Patient not found.");
+                            break;
+                        }
 
                         Console.WriteLine("Enter date and time of appointment (MM/dd/yyyy HH:mm): ");
                         if (!DateTime.TryParse(Console.ReadLine(), out DateTime apptDate))
@@ -92,7 +126,7 @@ namespace MyApp
                         bool doubleBooked = false;
                         foreach (Appointment a in appointments)
                         {
-                            if (a.Doctor == apptDoc && a.Time == apptDate)
+                            if (a.Doctor!.Name == apptDoc.Name && a.Time == apptDate)
                             {
                                 doubleBooked = true;
                                 break;
@@ -115,6 +149,7 @@ namespace MyApp
                         Console.WriteLine("Appointment scheduled successfully!");
                         break;
 
+
                     case "4":
                         Console.WriteLine("\n--- Patient List ---");
                         if (patients.Count == 0)
@@ -123,12 +158,13 @@ namespace MyApp
                         }
                         else
                         {
-                            foreach (string p in patients)
+                            foreach (Patient p in patients)
                             {
                                 Console.WriteLine(p);
                             }
                         }
                         break;
+
                     case "5":
                         Console.WriteLine("\n--- Physician List ---");
                         if (physicians.Count == 0)
@@ -137,12 +173,13 @@ namespace MyApp
                         }
                         else
                         {
-                            foreach (string d in physicians)
+                            foreach (Physician d in physicians)
                             {
                                 Console.WriteLine(d);
                             }
                         }
                         break;
+
                     case "6":
                         Console.WriteLine("\n--- Appointment List ---");
                         if (appointments.Count == 0)
@@ -157,13 +194,14 @@ namespace MyApp
                             }
                         }
                         break;
+
                     case "0":
                         Console.WriteLine("Exiting program...");
                         break;
+
                     default:
                         Console.WriteLine("Invalid choice, try again.");
                         break;
-
                 }
 
             } while (choice != "0");
