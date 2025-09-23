@@ -92,7 +92,7 @@ namespace MyApp
                     case "3":
                         Console.WriteLine("Enter physician's name for appointment: ");
                         string apptDocName = Console.ReadLine() ?? "";
-                        Physician apptDoc = physicians.Find(d => d.Name == apptDocName)!;
+                        Physician? apptDoc = physicians.Find(d => d.Name == apptDocName);
                         if (apptDoc == null)
                         {
                             Console.WriteLine("Physician not found.");
@@ -101,7 +101,7 @@ namespace MyApp
 
                         Console.WriteLine("Enter patient name for appointment: ");
                         string apptPatientName = Console.ReadLine() ?? "";
-                        Patient apptPatient = patients.Find(p => p.Name == apptPatientName)!;
+                        Patient? apptPatient = patients.Find(p => p.Name == apptPatientName);
                         if (apptPatient == null)
                         {
                             Console.WriteLine("Patient not found.");
@@ -148,6 +148,7 @@ namespace MyApp
 
                         Console.WriteLine("Appointment scheduled successfully!");
                         break;
+
 
 
                     case "4":
