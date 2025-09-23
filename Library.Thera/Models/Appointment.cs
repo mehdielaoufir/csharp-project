@@ -1,6 +1,6 @@
 using System;
 
-namespace Library.Thera
+namespace CLI.Thera.Models
 {
     public class Appointment
     {

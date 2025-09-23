@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Library.Thera;
+using CLI.Thera.Models;
 
 
 namespace MyApp
@@ -130,12 +130,38 @@ namespace MyApp
                         }
                         break;
                     case "5":
+                        Console.WriteLine("\n--- Physician List ---");
+                        if (physicians.Count == 0)
+                        {
+                            Console.WriteLine("No physicians found.");
+                        }
+                        else
+                        {
+                            foreach (string d in physicians)
+                            {
+                                Console.WriteLine(d);
+                            }
+                        }
                         break;
                     case "6":
+                        Console.WriteLine("\n--- Appointment List ---");
+                        if (appointments.Count == 0)
+                        {
+                            Console.WriteLine("No appointments found.");
+                        }
+                        else
+                        {
+                            foreach (Appointment a in appointments)
+                            {
+                                Console.WriteLine(a);
+                            }
+                        }
                         break;
                     case "0":
+                        Console.WriteLine("Exiting program...");
                         break;
                     default:
+                        Console.WriteLine("Invalid choice, try again.");
                         break;
 
                 }
