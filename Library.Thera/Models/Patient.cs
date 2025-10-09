@@ -1,3 +1,5 @@
+using System;
+
 namespace CLI.Thera.Models
 {
     public class Patient

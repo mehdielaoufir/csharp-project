@@ -126,7 +126,7 @@ namespace MyApp
                         bool doubleBooked = false;
                         foreach (Appointment a in appointments)
                         {
-                            if (a.Doctor!.Name == apptDoc.Name && a.Time == apptDate)
+                            if (a.Doctor == apptDoc.Name && a.Time == apptDate)
                             {
                                 doubleBooked = true;
                                 break;
@@ -141,8 +141,8 @@ namespace MyApp
 
                         appointments.Add(new Appointment
                         {
-                            Doctor = apptDoc,
-                            Patient = apptPatient,
+                            Doctor = apptDoc.Name!,
+                            Patient = apptPatient.Name!,
                             Time = apptDate
                         });
 
