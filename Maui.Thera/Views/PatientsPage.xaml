@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Maui.Thera.Views.PatientsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Patients">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add"
+                Clicked="OnAddClicked"/>
+    </ContentPage.ToolbarItems>
+
+    <CollectionView x:Name="PatientsList"
+            Margin="12">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid Padding="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="{Binding Name}"
+                            FontAttributes="Bold"/>
+                    <Label Grid.Row="1"
+                            FontSize="12"
+                            Text="{Binding Address}"/>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>
