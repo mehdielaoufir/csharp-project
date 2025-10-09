@@ -149,8 +149,6 @@ namespace MyApp
                         Console.WriteLine("Appointment scheduled successfully!");
                         break;
 
-
-
                     case "4":
                         Console.WriteLine("\n--- Patient List ---");
                         if (patients.Count == 0)
