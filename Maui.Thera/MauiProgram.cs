@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Maui.Thera.Services;
 
-
 namespace Maui.Thera;
 
 public static class MauiProgram
@@ -20,6 +19,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<InMemoryClinicStore>();
 		builder.Services.AddSingleton<IPatientService>(sp =>
 		sp.GetRequiredService<InMemoryClinicStore>());
+		builder.Services.AddTransient<Maui.Thera.Views.PatientsPage>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

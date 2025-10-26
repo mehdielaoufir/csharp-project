@@ -3,12 +3,13 @@
     x:Class="Maui.Thera.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Maui.Thera"
-    Title="Maui.Thera">
+    xmlns:views="clr-namespace:Maui.Thera.Views">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <FlyoutItem Title="Patients"
+            Route="patients">
+        <ShellContent
+            Title="Patients"
+            ContentTemplate="{DataTemplate views:PatientsPage}"/>
+    </FlyoutItem>
 
 </Shell>
