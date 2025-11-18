@@ -20,6 +20,8 @@ public static class MauiProgram
 		builder.Services.AddSingleton<IPatientService>(sp =>
 		sp.GetRequiredService<InMemoryClinicStore>());
 		builder.Services.AddTransient<Maui.Thera.Views.PatientsPage>();
+		builder.Services.AddTransient<Maui.Thera.Views.PatientFormPage>();
+
 
 #if DEBUG
 		builder.Logging.AddDebug();

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Maui.Thera.Views.PatientFormPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Patient Details">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16"
+                Spacing="12">
+
+            <Entry Placeholder="Name"
+                    x:Name="NameEntry"/>
+            <Entry Placeholder="Address"
+                    x:Name="AddressEntry"/>
+
+            <HorizontalStackLayout Spacing="8">
+                <Label Text="Birthdate:"
+                        VerticalOptions="Center"/>
+                <DatePicker x:Name="BirthdatePicker"/>
+            </HorizontalStackLayout>
+
+            <Entry Placeholder="Race"
+                    x:Name="RaceEntry"/>
+            <Entry Placeholder="Gender"
+                    x:Name="GenderEntry"/>
+
+            <Editor
+                x:Name="DiagnosesEditor"
+                HeightRequest="80"
+                Placeholder="Diagnoses"/>
+
+            <Editor
+                x:Name="PrescriptionsEditor"
+                HeightRequest="80"
+                Placeholder="Prescriptions"/>
+
+            <HorizontalStackLayout Spacing="12"
+                    Margin="0,20,0,0">
+                <Button Text="Save"
+                        Clicked="OnSaveClicked"/>
+                <Button Text="Cancel"
+                        Clicked="OnCancelClicked"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
