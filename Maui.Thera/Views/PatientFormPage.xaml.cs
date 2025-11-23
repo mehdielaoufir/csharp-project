@@ -1,35 +1,44 @@
+using System.Collections.Generic;
 using Maui.Thera.Models;
 using Maui.Thera.Services;
 
 namespace Maui.Thera.Views;
 
+[QueryProperty(nameof(EditingPatient), "patient")]
 public partial class PatientFormPage : ContentPage
 {
     private readonly IPatientService _svc;
-    private Patient _editingPatient;
+    private Patient _editingPatient = new Patient();
 
-    public PatientFormPage(IPatientService svc, Patient? patient = null)
+    public Patient EditingPatient
+    {
+        get => _editingPatient;
+        set
+        {
+            _editingPatient = value ?? new Patient();
+            LoadPatientToForm();
+        }
+    }
+
+    public PatientFormPage(IPatientService svc)
     {
         InitializeComponent();
         _svc = svc;
-        _editingPatient = patient ?? new Patient();
+    }
 
-
-        if (patient != null)
-        {
-            NameEntry.Text = patient.Name;
-            AddressEntry.Text = patient.Address;
-            BirthdatePicker.Date = patient.Birthdate;
-            RaceEntry.Text = patient.Race;
-            GenderEntry.Text = patient.Gender;
-            DiagnosesEditor.Text = patient.Diagnoses;
-            PrescriptionsEditor.Text = patient.Prescriptions;
-        }
+    private void LoadPatientToForm()
+    {
+        NameEntry.Text = _editingPatient.Name;
+        AddressEntry.Text = _editingPatient.Address;
+        BirthdatePicker.Date = _editingPatient.Birthdate;
+        RaceEntry.Text = _editingPatient.Race;
+        GenderEntry.Text = _editingPatient.Gender;
+        DiagnosesEditor.Text = _editingPatient.Diagnoses;
+        PrescriptionsEditor.Text = _editingPatient.Prescriptions;
     }
 
     private async void OnSaveClicked(object sender, EventArgs e)
     {
-
         _editingPatient.Name = NameEntry.Text;
         _editingPatient.Address = AddressEntry.Text;
         _editingPatient.Birthdate = BirthdatePicker.Date;
@@ -39,7 +48,6 @@ public partial class PatientFormPage : ContentPage
         _editingPatient.Prescriptions = PrescriptionsEditor.Text;
 
         await _svc.AddOrUpdateAsync(_editingPatient);
-
 
         await Shell.Current.GoToAsync("..");
     }

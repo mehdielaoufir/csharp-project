@@ -29,4 +29,24 @@ public partial class PatientsPage : ContentPage
     {
         await Shell.Current.GoToAsync(nameof(PatientFormPage));
     }
+
+    private async void OnPatientSelected(object sender, SelectionChangedEventArgs e)
+    {
+        if (e.CurrentSelection.Count == 0)
+            return;
+
+        var selected = e.CurrentSelection[0] as Patient;
+        if (selected == null)
+            return;
+
+        var navParams = new Dictionary<string, object>
+    {
+        { "patient", selected }
+    };
+
+        await Shell.Current.GoToAsync(nameof(PatientFormPage), navParams);
+
+        PatientsList.SelectedItem = null;
+    }
+
 }

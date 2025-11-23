@@ -7,11 +7,15 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add"
-                Clicked="OnAddClicked"/>
+                     Clicked="OnAddClicked"/>
     </ContentPage.ToolbarItems>
 
-    <CollectionView x:Name="PatientsList"
-            Margin="12">
+    <CollectionView
+        x:Name="PatientsList"
+        Margin="12"
+        SelectionMode="Single"
+        SelectionChanged="OnPatientSelected">
+
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Grid Padding="8">
@@ -20,10 +24,10 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Label Text="{Binding Name}"
-                            FontAttributes="Bold"/>
+                           FontAttributes="Bold"/>
                     <Label Grid.Row="1"
-                            FontSize="12"
-                            Text="{Binding Address}"/>
+                           FontSize="12"
+                           Text="{Binding Address}"/>
                 </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>
