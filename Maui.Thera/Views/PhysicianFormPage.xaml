@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Maui.Thera.Views.PhysicianFormPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+    Title="Physician Form">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20"
+                Spacing="16">
+
+            <Entry x:Name="NameEntry"
+                   Placeholder="Full Name"/>
+
+            <Entry x:Name="LicenseEntry"
+                   Placeholder="License Number"/>
+
+            <DatePicker x:Name="GradDatePicker"
+                        MaximumDate="{x:Static sys:DateTime.Today}"/>
+
+            <Entry x:Name="SpecializationEntry"
+                   Placeholder="Specialization (e.g. Cardiology)"/>
+
+            <HorizontalStackLayout Spacing="12">
+                <Button Text="Save"
+                        Clicked="OnSaveClicked"
+                        BackgroundColor="#4CAF50"
+                        TextColor="White"/>
+
+                <Button Text="Cancel"
+                        Clicked="OnCancelClicked"
+                        BackgroundColor="Gray"
+                        TextColor="White"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

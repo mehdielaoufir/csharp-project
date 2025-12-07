@@ -49,4 +49,23 @@ public partial class PatientsPage : ContentPage
         PatientsList.SelectedItem = null;
     }
 
+    private async void OnDeletePatient(object sender, EventArgs e)
+    {
+        if (sender is Button button && button.CommandParameter is Patient patient)
+        {
+            bool confirm = await DisplayAlert(
+                "Delete Patient",
+                $"Are you sure you want to delete {patient.Name}?",
+                "Yes",
+                "No");
+
+            if (!confirm)
+                return;
+
+            await _svc.DeleteAsync(patient.Id);
+            await LoadAsync();
+        }
+    }
+
+
 }

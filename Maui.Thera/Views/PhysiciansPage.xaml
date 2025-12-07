@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="Maui.Thera.Views.PatientsPage"
+    x:Class="Maui.Thera.Views.PhysiciansPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Patients">
+    Title="Physicians">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add"
@@ -11,10 +11,10 @@
     </ContentPage.ToolbarItems>
 
     <CollectionView
-        x:Name="PatientsList"
+        x:Name="PhysiciansList"
         Margin="12"
         SelectionMode="Single"
-        SelectionChanged="OnPatientSelected">
+        SelectionChanged="OnPhysicianSelected">
 
         <CollectionView.ItemTemplate>
             <DataTemplate>
@@ -29,7 +29,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <!-- Name & address on the left -->
+                    <!-- Name & specialization on the left -->
                     <Label Grid.Row="0"
                            Grid.Column="0"
                            Text="{Binding Name}"
@@ -38,7 +38,7 @@
                     <Label Grid.Row="1"
                            Grid.Column="0"
                            FontSize="12"
-                           Text="{Binding Address}"/>
+                           Text="{Binding Specialization}"/>
 
                     <!-- Delete button on the right -->
                     <Button Grid.RowSpan="2"
@@ -47,7 +47,7 @@
                             BackgroundColor="Red"
                             TextColor="White"
                             Padding="10,4"
-                            Clicked="OnDeletePatient"
+                            Clicked="OnDeletePhysician"
                             CommandParameter="{Binding .}"/>
                 </Grid>
             </DataTemplate>

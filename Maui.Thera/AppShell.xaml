@@ -6,10 +6,25 @@
     xmlns:views="clr-namespace:Maui.Thera.Views">
 
     <FlyoutItem Title="Patients"
-            Route="patients">
+                Route="patients">
         <ShellContent
             Title="Patients"
             ContentTemplate="{DataTemplate views:PatientsPage}"/>
     </FlyoutItem>
+
+    <FlyoutItem Title="Physicians"
+                Route="physicians">
+        <ShellContent
+            Title="Physicians"
+            ContentTemplate="{DataTemplate views:PhysiciansPage}"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Appointments"
+                Route="appointments">
+        <ShellContent
+            Title="Appointments"
+            ContentTemplate="{DataTemplate views:AppointmentsPage}"/>
+    </FlyoutItem>
+
 
 </Shell>

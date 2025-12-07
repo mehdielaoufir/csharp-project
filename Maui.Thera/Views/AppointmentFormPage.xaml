@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Maui.Thera.Views.AppointmentFormPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Appointment">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20"
+                Spacing="16">
+
+            <Label Text="Select Patient"
+                    FontAttributes="Bold"/>
+            <Picker x:Name="PatientPicker"
+                    ItemDisplayBinding="{Binding Name}"/>
+
+            <Label Text="Select Physician"
+                    FontAttributes="Bold"/>
+            <Picker x:Name="PhysicianPicker"
+                    ItemDisplayBinding="{Binding Name}"/>
+
+            <Label Text="Select Date"
+                    FontAttributes="Bold"/>
+            <DatePicker x:Name="DatePicker"/>
+
+            <Label Text="Select Time"
+                    FontAttributes="Bold"/>
+            <TimePicker x:Name="TimePicker"/>
+
+            <HorizontalStackLayout Spacing="12">
+                <Button Text="Save"
+                        Clicked="OnSaveClicked"
+                        BackgroundColor="#4CAF50"
+                        TextColor="White"/>
+
+                <Button Text="Cancel"
+                        Clicked="OnCancelClicked"
+                        BackgroundColor="Gray"
+                        TextColor="White"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

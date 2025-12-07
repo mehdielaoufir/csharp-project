@@ -18,9 +18,19 @@ public static class MauiProgram
 
 		builder.Services.AddSingleton<InMemoryClinicStore>();
 		builder.Services.AddSingleton<IPatientService>(sp =>
-		sp.GetRequiredService<InMemoryClinicStore>());
+			sp.GetRequiredService<InMemoryClinicStore>());
+		builder.Services.AddSingleton<IPhysicianService>(sp =>
+			sp.GetRequiredService<InMemoryClinicStore>());
+
 		builder.Services.AddTransient<Maui.Thera.Views.PatientsPage>();
 		builder.Services.AddTransient<Maui.Thera.Views.PatientFormPage>();
+		builder.Services.AddTransient<Maui.Thera.Views.PhysiciansPage>();
+		builder.Services.AddTransient<Maui.Thera.Views.PhysicianFormPage>();
+		builder.Services.AddTransient<Maui.Thera.Views.AppointmentsPage>();
+		builder.Services.AddTransient<Maui.Thera.Views.AppointmentFormPage>();
+
+
+
 
 
 #if DEBUG
