@@ -5,12 +5,12 @@ namespace Maui.Thera.Views;
 
 public partial class PhysiciansPage : ContentPage
 {
-    private readonly IPhysicianService _svc;
+    private readonly WebRequestHandler _api;
 
-    public PhysiciansPage(IPhysicianService svc)
+    public PhysiciansPage(WebRequestHandler api)
     {
         InitializeComponent();
-        _svc = svc;
+        _api = api;
     }
 
     protected override async void OnAppearing()
@@ -21,8 +21,8 @@ public partial class PhysiciansPage : ContentPage
 
     private async Task LoadAsync()
     {
-        var items = await _svc.GetAllAsync();
-        PhysiciansList.ItemsSource = items;
+        var items = await _api.GetAsync<List<Physician>>("api/physicians");
+        PhysiciansList.ItemsSource = items ?? new List<Physician>();
     }
 
     private async void OnAddClicked(object sender, EventArgs e)
@@ -67,7 +67,7 @@ public partial class PhysiciansPage : ContentPage
             if (!confirm)
                 return;
 
-            await _svc.DeleteAsync(p.Id);
+            await _api.DeleteAsync($"api/physicians/{p.Id}");
             await LoadAsync();
         }
     }

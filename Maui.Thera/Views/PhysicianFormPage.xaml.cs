@@ -6,12 +6,12 @@ namespace Maui.Thera.Views;
 [QueryProperty(nameof(EditingPhysician), "physician")]
 public partial class PhysicianFormPage : ContentPage
 {
-    private readonly IPhysicianService _svc;
+    private readonly WebRequestHandler _api;
 
-    public PhysicianFormPage(IPhysicianService svc)
+    public PhysicianFormPage(WebRequestHandler api)
     {
         InitializeComponent();
-        _svc = svc;
+        _api = api;
     }
 
     private Physician _editingPhysician = new();
@@ -27,22 +27,28 @@ public partial class PhysicianFormPage : ContentPage
 
     private void LoadForm()
     {
-        NameEntry.Text = _editingPhysician.Name;
-        LicenseEntry.Text = _editingPhysician.LicenseNumber;
-        GradDatePicker.Date = _editingPhysician.GraduationDate == default
-            ? DateTime.Today.AddYears(-5)
-            : _editingPhysician.GraduationDate;
-        SpecializationEntry.Text = _editingPhysician.Specialization;
+        FirstNameEntry.Text = _editingPhysician.FirstName;
+        LastNameEntry.Text = _editingPhysician.LastName;
+        SpecialtyEntry.Text = _editingPhysician.Specialty;
+        PhoneEntry.Text = _editingPhysician.Phone;
     }
 
     private async void OnSaveClicked(object sender, EventArgs e)
     {
-        _editingPhysician.Name = NameEntry.Text;
-        _editingPhysician.LicenseNumber = LicenseEntry.Text;
-        _editingPhysician.GraduationDate = GradDatePicker.Date;
-        _editingPhysician.Specialization = SpecializationEntry.Text;
+        _editingPhysician.FirstName = FirstNameEntry.Text;
+        _editingPhysician.LastName = LastNameEntry.Text;
+        _editingPhysician.Specialty = SpecialtyEntry.Text;
+        _editingPhysician.Phone = PhoneEntry.Text;
 
-        await _svc.AddOrUpdateAsync(_editingPhysician);
+        if (_editingPhysician.Id == 0)
+        {
+            await _api.PostAsync<Physician>("api/physicians", _editingPhysician);
+        }
+        else
+        {
+            await _api.PutAsync($"api/physicians/{_editingPhysician.Id}", _editingPhysician);
+        }
+
         await Shell.Current.GoToAsync("..");
     }
 

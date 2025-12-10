@@ -11,6 +11,7 @@ public partial class AppointmentFormPage : ContentPage
     private readonly IPhysicianService _physicianSvc;
 
     private Appointment _editingAppointment = new();
+    private bool _shouldLoadForm = false;
 
     public Appointment EditingAppointment
     {
@@ -18,7 +19,7 @@ public partial class AppointmentFormPage : ContentPage
         set
         {
             _editingAppointment = value;
-            LoadForm();
+            _shouldLoadForm = true;
         }
     }
 
@@ -31,11 +32,22 @@ public partial class AppointmentFormPage : ContentPage
         _apptSvc = apptSvc;
         _patientSvc = patientSvc;
         _physicianSvc = physicianSvc;
-
-        LoadPickers();
+        _ = LoadPickersAsync();
     }
 
-    private async void LoadPickers()
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await LoadPickersAsync();
+
+        if (_shouldLoadForm)
+        {
+            LoadForm();
+            _shouldLoadForm = false;
+        }
+    }
+
+    private async Task LoadPickersAsync()
     {
         PatientPicker.ItemsSource = await _patientSvc.GetAllAsync();
         PhysicianPicker.ItemsSource = await _physicianSvc.GetAllAsync();
@@ -45,17 +57,19 @@ public partial class AppointmentFormPage : ContentPage
     {
         if (_editingAppointment.Id != 0)
         {
-            // Set patient
-            var patients = PatientPicker.ItemsSource as List<Patient>;
-            PatientPicker.SelectedItem = patients?.FirstOrDefault(p => p.Id == _editingAppointment.PatientId);
+            if (PatientPicker.ItemsSource is List<Patient> patients)
+                PatientPicker.SelectedItem = patients.FirstOrDefault(p => p.Id == _editingAppointment.PatientId);
 
-            // Set physician
-            var physicians = PhysicianPicker.ItemsSource as List<Physician>;
-            PhysicianPicker.SelectedItem = physicians?.FirstOrDefault(d => d.Id == _editingAppointment.PhysicianId);
+            if (PhysicianPicker.ItemsSource is List<Physician> physicians)
+                PhysicianPicker.SelectedItem = physicians.FirstOrDefault(d => d.Id == _editingAppointment.PhysicianId);
 
-            // Date/time
             DatePicker.Date = _editingAppointment.Date.Date;
             TimePicker.Time = _editingAppointment.Date.TimeOfDay;
+        }
+        else
+        {
+            DatePicker.Date = DateTime.Today;
+            TimePicker.Time = new TimeSpan(9, 0, 0);
         }
     }
 
@@ -68,34 +82,29 @@ public partial class AppointmentFormPage : ContentPage
             return;
         }
 
-        // Build the exact appointment DateTime
         DateTime date = DatePicker.Date;
         TimeSpan time = TimePicker.Time;
         DateTime apptDateTime = date.Date + time;
 
-        // Rule: Must be Monday–Friday
-        if (apptDateTime.DayOfWeek == DayOfWeek.Saturday ||
-            apptDateTime.DayOfWeek == DayOfWeek.Sunday)
+        if (apptDateTime.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday)
         {
-            await DisplayAlert("Invalid Time", "Appointments can only be Monday–Friday.", "OK");
+            await DisplayAlert("Invalid Time", "Appointments must be Monday–Friday.", "OK");
             return;
         }
 
-        // Rule: Must be between 8am and 5pm
         if (apptDateTime.Hour < 8 || apptDateTime.Hour >= 17)
         {
             await DisplayAlert("Invalid Time", "Appointments must be between 8am and 5pm.", "OK");
             return;
         }
 
-        // Rule: No double booking for physician
         var allAppts = await _apptSvc.GetAllAsync();
-        bool doubleBooked = allAppts.Any(a =>
+        bool conflict = allAppts.Any(a =>
             a.PhysicianId == selectedPhysician.Id &&
             a.Date == apptDateTime &&
             a.Id != _editingAppointment.Id);
 
-        if (doubleBooked)
+        if (conflict)
         {
             await DisplayAlert("Conflict",
                 "This physician already has an appointment at that time.",
@@ -103,7 +112,6 @@ public partial class AppointmentFormPage : ContentPage
             return;
         }
 
-        // Save the appointment
         _editingAppointment.PatientId = selectedPatient.Id;
         _editingAppointment.PhysicianId = selectedPhysician.Id;
         _editingAppointment.Date = apptDateTime;

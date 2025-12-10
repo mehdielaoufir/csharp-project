@@ -3,24 +3,23 @@
     x:Class="Maui.Thera.Views.PhysicianFormPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
     Title="Physician Form">
 
     <ScrollView>
         <VerticalStackLayout Padding="20"
-                Spacing="16">
+                             Spacing="16">
 
-            <Entry x:Name="NameEntry"
-                   Placeholder="Full Name"/>
+            <Entry x:Name="FirstNameEntry"
+                   Placeholder="First Name"/>
 
-            <Entry x:Name="LicenseEntry"
-                   Placeholder="License Number"/>
+            <Entry x:Name="LastNameEntry"
+                   Placeholder="Last Name"/>
 
-            <DatePicker x:Name="GradDatePicker"
-                        MaximumDate="{x:Static sys:DateTime.Today}"/>
+            <Entry x:Name="SpecialtyEntry"
+                   Placeholder="Specialty (e.g. Cardiology)"/>
 
-            <Entry x:Name="SpecializationEntry"
-                   Placeholder="Specialization (e.g. Cardiology)"/>
+            <Entry x:Name="PhoneEntry"
+                   Placeholder="Phone Number"/>
 
             <HorizontalStackLayout Spacing="12">
                 <Button Text="Save"
